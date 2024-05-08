@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/primary"
+    tools:context="com.helpxpert.staffedition.Activities.ActivityMain">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/background_icon"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/_8sdp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/settings"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginRight="@dimen/_16sdp"
+        android:background="@drawable/background_icon"
+        android:padding="@dimen/_6sdp"
+        android:src="@drawable/icon_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:tint="@color/primary"/>
+
+    <TextView
+        android:id="@+id/homeUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Report History"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imgProfile"
+        app:layout_constraintEnd_toStartOf="@id/settings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imgProfile"
+        app:layout_constraintTop_toTopOf="@id/imgProfile" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/background_content_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeUserName">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activitiesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:padding="@dimen/_20sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_gravity="center"/>
+<!--        <TextView-->
+<!--            android:id="@+id/reportText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_10ssp"-->
+<!--            android:layout_marginStart="@dimen/_25sdp"-->
+<!--            android:layout_marginEnd="@dimen/_20sdp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:gravity="center"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="Activities"-->
+<!--            android:textColor="@color/second_text"-->
+<!--            android:textSize="@dimen/_18ssp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/homeUserName"-->
+<!--            app:layout_constraintEnd_toStartOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <TextView
+            android:id="@+id/textErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:gravity="center"
+            android:textColor="@color/error"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="50dp"
+            android:background="@color/white">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                app:labelVisibilityMode="labeled"
+                android:background="@drawable/transparent_background"
+                app:menu="@menu/bottom_nav_menu" />
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/makingReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:src="@drawable/ic_add"
+                app:layout_anchor="@id/bottomNav"
+                app:maxImageSize="40dp"
+                app:tint="@color/white"
+                android:contentDescription="Report" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
